@@ -33,12 +33,12 @@ for (let i = 0; i < oldStorage.length; i++) {
             </div>
             <div class="valide_delete">
                 <a href="">
-                    <button>
+                    <button class="editBtn${i}">
                         <img src="assets/img/5996831.png" alt="valider">
                     </button>
                 </a>
                 <a href="">
-                    <button>
+                    <button class="delBtn${i}">
                         <img src="assets/img/9153963.png" alt="annuler">
                     </button>
                 </a>
@@ -48,7 +48,23 @@ for (let i = 0; i < oldStorage.length; i++) {
         `
     }else{
         d.querySelector('#fait').innerHTML +=`
-        <li>${oldStorage[i].Text}</li>
+        <li>
+            <div class="texte">
+                ${oldStorage[i].Text}
+            </div>
+            <div class="valide_delete">
+                <a href="">
+                    <button class="editBtn${i}">
+                        <img src="assets/img/5996831.png" alt="valider">
+                    </button>
+                </a>
+                <a href="">
+                    <button class="delBtn${i}">
+                        <img src="assets/img/9153963.png" alt="annuler">
+                    </button>
+                </a>
+            </div>
+        </li>
         `
 
     }
