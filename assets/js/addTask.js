@@ -2,7 +2,6 @@ let d = document;
 let addLine = d.querySelector("#addLine");
 let addBtn = d.querySelector("#addBtn");
 
-
 let oldStorage = JSON.parse(localStorage.getItem("task"));
 
 let newStorage = [];
@@ -12,6 +11,7 @@ if (oldStorage) {
         newStorage.push(oldStorage[i]);
     }
 }
+
 addBtn.addEventListener("click",  e=>{
 
     let task = {
@@ -21,3 +21,7 @@ addBtn.addEventListener("click",  e=>{
     newStorage.push(task);
     localStorage.setItem("task", JSON.stringify(newStorage));
 });
+
+for (let i = 0; i < newStorage.length ; i++) {
+    console.log(newStorage[i])
+}
