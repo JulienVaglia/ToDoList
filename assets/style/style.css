@@ -1,0 +1,79 @@
+main {
+    font-size: larger;
+}
+
+.reglage {
+    margin-top: 2vh;
+    margin-left: 94vw;
+}
+
+button {
+    border-radius: 15px;
+}
+
+#addLine {
+    width: 30vw;
+    height: 5vh;
+    text-align: center;
+}
+
+.task_add input{
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+#request {
+    position: absolute;
+    margin-left: 49.2vh;
+    padding-top: 0.4vh;
+    border: grey 1px ;
+}
+
+img {
+    width: 1.5vw;
+    height: auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10vh;
+}
+
+.task_add {
+    display: flex;
+    justify-content:center;
+}
+
+hr{
+    width: 40vw;
+    margin: 7vh auto;
+}
+
+
+li {
+    border-radius: 15px;
+    background-color: rgb(222, 222, 222);
+    display: flex;
+    width: 30vw;
+    height: 5vh;
+    margin: 1vh auto;
+
+}
+
+.task_done li {
+    text-decoration: line-through;
+    font-style: italic;
+    color: grey;
+}
+
+.texte {
+    width: 3vw;
+    margin-top: 1vh;
+    margin-left: 5vw;
+}
+
+.valide_delete {
+    margin-top: 0.4vh;
+    margin-left: 15vw;
+    margin-right: 1vw;
+}
