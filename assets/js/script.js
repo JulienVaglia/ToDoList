@@ -22,14 +22,14 @@ addBtn.addEventListener("click", function (event) {
 });
 
 
-for (let i = 0; i < oldStorage.length; i++) {
-    console.log(oldStorage[i])
+for (let i = 0; i < newStorage.length; i++) {
+    console.log(newStorage[i])
     
-    if (oldStorage[i].statement === "undo"){
+    if (newStorage[i].statement === "undo"){
         d.querySelector('#aFaire').innerHTML +=`
         <li>
             <div class="texte">
-                ${oldStorage[i].Text}
+                ${newStorage[i].Text}
             </div>
             <div class="valide_delete">
                 <a href="">
@@ -44,13 +44,12 @@ for (let i = 0; i < oldStorage.length; i++) {
                 </a>
             </div>
         </li>
-  
         `
     }else{
         d.querySelector('#fait').innerHTML +=`
         <li>
             <div class="texte">
-                ${oldStorage[i].Text}
+                ${newStorage[i].Text}
             </div>
             <div class="valide_delete">
                 <a href="">
@@ -66,8 +65,21 @@ for (let i = 0; i < oldStorage.length; i++) {
             </div>
         </li>
         `
-
     }
 
+    let editBtn = d.querySelector(".editBtn"+i);
+
+    editBtn.addEventListener("click", function (event) {
+        if ((newStorage[i].statement) === "undo") {
+            newStorage[i].statement = "do";
+        }
+        else {
+            newStorage[i].statement = "undo";
+        }
+        localStorage.setItem("task", JSON.stringify(newStorage));
+    })
 
 }
+
+
+
