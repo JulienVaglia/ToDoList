@@ -11,9 +11,10 @@ button {
     border-radius: 15px;
 }
 
-#add {
+#addLine {
     width: 30vw;
     height: 5vh;
+    text-align: center;
 }
 
 .task_add input{
@@ -41,10 +42,6 @@ h1 {
 .task_add {
     display: flex;
     justify-content:center;
-}
-
-#add {
-    text-align: center;
 }
 
 hr{
