@@ -45,10 +45,10 @@ function displayTasks() {
                     ${tasks[i].Text}
                 </div>
                 <div class="valide_delete">
-                    <button id="btnEdit${i}">
+                    <button class="btnEdit${i}">
                         <img src="assets/img/5996831.png" alt="valider">
                     </button>
-                    <button id="btnDelete${i} ">
+                    <button class="btnDelete${i} ">
                         <img src="assets/img/9153963.png" alt="annuler">
                     </button>
                 </div>
@@ -59,10 +59,10 @@ function displayTasks() {
         } else {
             fait.innerHTML += displayTask;
         }
-        const btnEdit = document.querySelector("#btnEdit" + i);
-        const btnDel = document.querySelector("#btnDelete" + i);
+        let btnEdit = document.querySelector(".btnEdit" + i);
+        let btnDel = document.querySelector(".btnDelete" + i);
 
-        btnEdit.addEventListener("click", function (event) {
+        btnEdit.addEventListener("click", e=> {
             if ((tasks[i].statement) === "undo") {
                 tasks[i].statement = "do";
             }
@@ -72,13 +72,10 @@ function displayTasks() {
             putInLocalStorage();
         })
 
-        btnDel.addEventListener('click', function () {
+        btnDel.addEventListener('click', e=> {
             tasks.splice(i, 1)
             putInLocalStorage()
         })
-
-
-
 
     }
 }
