@@ -3,7 +3,6 @@ let addLine = d.querySelector("#addLine");
 let addBtn = d.querySelector("#addBtn");
 
 
-
 let oldStorage = JSON.parse(localStorage.getItem("task"));
 let newStorage = [];
 if (oldStorage) {
@@ -15,8 +14,7 @@ if (oldStorage) {
 
 addBtn.addEventListener("click", function (event) {
     let task = {
-        Text: addLine.value, 
-        statement: "undo"
+        Text: addLine.value, statement: "undo"
     }
     newStorage.push(task);
     localStorage.setItem("task", JSON.stringify(newStorage));
@@ -25,9 +23,9 @@ addBtn.addEventListener("click", function (event) {
 
 for (let i = 0; i < oldStorage.length; i++) {
     console.log(oldStorage[i])
-    
-    if (oldStorage[i].statement === "undo"){
-        d.querySelector('#aFaire').innerHTML +=`
+
+    if (oldStorage[i].statement === "undo") {
+        d.querySelector('#aFaire').innerHTML += `
         <li class="currentLi${i}">
             <div class="texte">
                 ${oldStorage[i].Text}
@@ -47,8 +45,8 @@ for (let i = 0; i < oldStorage.length; i++) {
         </li>
   
         `
-    }else{
-        d.querySelector('#fait').innerHTML +=`
+    } else {
+        d.querySelector('#fait').innerHTML += `
         <li class="currentLi${i}">
             <div class="texte">
                 ${oldStorage[i].Text}
@@ -69,12 +67,12 @@ for (let i = 0; i < oldStorage.length; i++) {
         `
     }
 
-    
+
     // Click on a close button to hide the current list item
-    let close = document.querySelector(".delBtn"+i);
-    
-    close.addEventListener('click', function(){
-        newStorage.splice(i,1)
+    let close = document.querySelector(".delBtn" + i);
+
+    close.addEventListener('click', function () {
+        newStorage.splice(i, 1)
         localStorage.setItem("task", JSON.stringify(newStorage));
     })
 }

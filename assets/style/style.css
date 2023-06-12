@@ -17,7 +17,7 @@ button {
     text-align: center;
 }
 
-.task_add input{
+.task_add input {
     margin: 0 auto;
     border-radius: 10px;
 }
@@ -26,7 +26,7 @@ button {
     position: absolute;
     margin-left: 49.2vh;
     padding-top: 0.4vh;
-    border: grey 1px ;
+    border: grey 1px;
 }
 
 img {
@@ -41,10 +41,10 @@ h1 {
 
 .task_add {
     display: flex;
-    justify-content:center;
+    justify-content: center;
 }
 
-hr{
+hr {
     width: 40vw;
     margin: 7vh auto;
 }
