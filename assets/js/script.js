@@ -1,83 +1,81 @@
-let d = document;
-let addLine = d.querySelector("#addLine");
-let addBtn = d.querySelector("#addBtn");
+const d = document;
+const addLine = d.querySelector("#addLine");
 
+const btnUpdateTitle = d.querySelector("#btnUpdateTitle");
+const btnAdd = d.querySelector("#btnAdd");
+const btnCancel = d.querySelector("#btnCancel");
 
-let oldStorage = JSON.parse(localStorage.getItem("task"));
-let newStorage = [];
-if (oldStorage) {
-    for (let i = 0; i < oldStorage.length; i++) {
-        newStorage.push(oldStorage[i]);
-    }
+const aFaire = d.querySelector("#aFaire");
+const fait = d.querySelector("#fait");
+
+let tasks;
+
+// récupération de l'ancien localStorage
+if (localStorage.getItem("task") !== null) {
+    tasks = JSON.parse(localStorage.getItem("task"));
+}else {
+    tasks = [];
 }
 
+displayTasks()
 
-addBtn.addEventListener("click", function (event) {
+function putInLocalStorage() {
+    localStorage.setItem("task", JSON.stringify(tasks));
+    displayTasks()
+}
+
+btnAdd.addEventListener("click", e=>{
+    console.log(addLine.value)
     let task = {
-        Text: addLine.value, statement: "undo"
+        Text: addLine.value,
+        statement: "undo"
     }
-    newStorage.push(task);
-    localStorage.setItem("task", JSON.stringify(newStorage));
+    tasks.push(task);
+    putInLocalStorage();
 });
 
-
-for (let i = 0; i < oldStorage.length; i++) {
-    console.log(oldStorage[i])
-
-    if (oldStorage[i].statement === "undo") {
-        d.querySelector('#aFaire').innerHTML += `
-        <li class="currentLi${i}">
-            <div class="texte">
-                ${oldStorage[i].Text}
-            </div>
-            <div class="valide_delete">
-                <a href="">
-                    <button class="editBtn${i}">
+function displayTasks() {
+    aFaire.innerHTML = "";
+    fait.innerHTML = "";
+    console.log(tasks)
+    for (let i = 0; i < tasks.length; i++) {
+        let displayTask = `   
+            <li class="currentLi${i}">
+                <div class="texte">
+                    ${tasks[i].Text}
+                </div>
+                <div class="valide_delete">
+                    <button class="btnEdit${i}">
                         <img src="assets/img/5996831.png" alt="valider">
                     </button>
-                </a>
-                <a href="">
-                    <button class="delBtn${i}">
+                    <button class="btnDelete${i} ">
                         <img src="assets/img/9153963.png" alt="annuler">
                     </button>
-                </a>
-            </div>
-        </li>
-  
-        `
-    } else {
-        d.querySelector('#fait').innerHTML += `
-        <li class="currentLi${i}">
-            <div class="texte">
-                ${oldStorage[i].Text}
-            </div>
-            <div class="valide_delete">
-                <a href="">
-                    <button class="editBtn${i}">
-                        <img src="assets/img/5996831.png" alt="valider">
-                    </button>
-                </a>
-                <a href="">
-                    <button class="delBtn${i}">
-                        <img src="assets/img/9153963.png" alt="annuler">
-                    </button>
-                </a>
-            </div>
-        </li>
-        `
+                </div>
+            </li>
+        `;
+        if (tasks[i].statement === "undo") {
+            aFaire.innerHTML += displayTask;
+        } else {
+            fait.innerHTML += displayTask;
+        }
+        let btnEdit = document.querySelector(".btnEdit" + i);
+        let btnDel = document.querySelector(".btnDelete" + i);
+
+        btnEdit.addEventListener("click", e=> {
+            if ((tasks[i].statement) === "undo") {
+                tasks[i].statement = "do";
+            }
+            else {
+                tasks[i].statement = "undo";
+            }
+            putInLocalStorage();
+        })
+
+        btnDel.addEventListener('click', e=> {
+            tasks.splice(i, 1)
+            putInLocalStorage()
+        })
+
     }
-
-
-    // Click on a close button to hide the current list item
-    let close = document.querySelector(".delBtn" + i);
-
-    close.addEventListener('click', function () {
-        newStorage.splice(i, 1)
-        localStorage.setItem("task", JSON.stringify(newStorage));
-    })
 }
-
-
-
-
-
