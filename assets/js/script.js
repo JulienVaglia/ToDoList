@@ -13,11 +13,11 @@ let tasks;
 // récupération de l'ancien localStorage
 if (localStorage.getItem("task") !== null) {
     tasks = JSON.parse(localStorage.getItem("task"));
+    displayTasks()
 }else {
     tasks = [];
 }
 
-displayTasks()
 
 function putInLocalStorage() {
     localStorage.setItem("task", JSON.stringify(tasks));
@@ -25,7 +25,6 @@ function putInLocalStorage() {
 }
 
 btnAdd.addEventListener("click", e=>{
-    console.log(addLine.value)
     let task = {
         Text: addLine.value,
         statement: "undo"
@@ -37,32 +36,42 @@ btnAdd.addEventListener("click", e=>{
 function displayTasks() {
     aFaire.innerHTML = "";
     fait.innerHTML = "";
-    console.log(tasks)
+
     for (let i = 0; i < tasks.length; i++) {
         let displayTask = `   
             <li class="currentLi${i}">
-                <div class="texte">
+                <div class="texte" id="textTask${i}">
                     ${tasks[i].Text}
                 </div>
                 <div class="valide_delete">
-                    <button class="btnEdit${i}">
+                    <button id="btnEdit${i}">
                         <img src="assets/img/5996831.png" alt="valider">
                     </button>
-                    <button class="btnDelete${i} ">
+                    <button id="btnDelete${i}">
                         <img src="assets/img/9153963.png" alt="annuler">
                     </button>
                 </div>
             </li>
         `;
+
         if (tasks[i].statement === "undo") {
             aFaire.innerHTML += displayTask;
         } else {
             fait.innerHTML += displayTask;
         }
-        let btnEdit = document.querySelector(".btnEdit" + i);
-        let btnDel = document.querySelector(".btnDelete" + i);
 
-        btnEdit.addEventListener("click", e=> {
+        document.querySelector("#btnEdit" + i).addEventListener("click", e=> {
+
+        })
+
+        document.querySelector("#btnDelete" + i).addEventListener('click', e=> {
+            tasks.splice(i, 1)
+            putInLocalStorage()
+        })
+
+        document.querySelector("#textTask" + 1).addEventListener('click', e=> {
+            console.log(tasks[i].Text)
+
             if ((tasks[i].statement) === "undo") {
                 tasks[i].statement = "do";
             }
@@ -70,11 +79,6 @@ function displayTasks() {
                 tasks[i].statement = "undo";
             }
             putInLocalStorage();
-        })
-
-        btnDel.addEventListener('click', e=> {
-            tasks.splice(i, 1)
-            putInLocalStorage()
         })
 
     }
