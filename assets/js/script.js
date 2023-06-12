@@ -1,81 +1,59 @@
 let d = document;
 let addLine = d.querySelector("#addLine");
-let addBtn = d.querySelector("#addBtn");
+
+let btnAdd = d.querySelector("#btnAdd");
+let btnCancel = d.querySelector("#btnCancel");
+let btnUpdateTitle = d.querySelector("#btnUpdateTitle");
+
+let aFaire = d.querySelector("#aFaire");
+let fait = d.querySelector("#fait");
+
+// récupération de l'ancien localStorage
+let tasks = [];
+tasks.push(JSON.parse(localStorage.getItem("task")));
+console.log(tasks)
 
 
-let oldStorage = JSON.parse(localStorage.getItem("task"));
-let newStorage = [];
-if (oldStorage) {
-    for (let i = 0; i < oldStorage.length; i++) {
-        newStorage.push(oldStorage[i]);
-    }
-}
+showTasks()
 
 
-addBtn.addEventListener("click", function (event) {
+btnAdd.addEventListener("click", function (event) {
     let task = {
         Text: addLine.value, statement: "undo"
     }
-    newStorage.push(task);
-    localStorage.setItem("task", JSON.stringify(newStorage));
+    tasks.push(task);
+    localStorage.setItem("task", JSON.stringify(tasks));
 });
 
 
-for (let i = 0; i < oldStorage.length; i++) {
-    console.log(oldStorage[i])
-
-    if (oldStorage[i].statement === "undo") {
-        d.querySelector('#aFaire').innerHTML += `
+function showTasks() {
+    for (let i = 0; i < tasks.length; i++) {
+        let displayTask = `   
         <li class="currentLi${i}">
             <div class="texte">
-                ${oldStorage[i].Text}
+                ${tasks[i].Text}
             </div>
             <div class="valide_delete">
-                <a href="">
-                    <button class="editBtn${i}">
-                        <img src="assets/img/5996831.png" alt="valider">
-                    </button>
-                </a>
-                <a href="">
-                    <button class="delBtn${i}">
-                        <img src="assets/img/9153963.png" alt="annuler">
-                    </button>
-                </a>
+                <button class="editBtn${i}">
+                    <img src="assets/img/5996831.png" alt="valider">
+                </button>
+                <button class="delBtn${i}">
+                    <img src="assets/img/9153963.png" alt="annuler">
+                </button>
             </div>
         </li>
-  
-        `
-    } else {
-        d.querySelector('#fait').innerHTML += `
-        <li class="currentLi${i}">
-            <div class="texte">
-                ${oldStorage[i].Text}
-            </div>
-            <div class="valide_delete">
-                <a href="">
-                    <button class="editBtn${i}">
-                        <img src="assets/img/5996831.png" alt="valider">
-                    </button>
-                </a>
-                <a href="">
-                    <button class="delBtn${i}">
-                        <img src="assets/img/9153963.png" alt="annuler">
-                    </button>
-                </a>
-            </div>
-        </li>
-        `
+    `;
+        if (tasks[i].statement === "undo") {
+            aFaire.innerHTML += displayTask;
+        } else {
+            fait.innerHTML += displayTask;
+        }
     }
-
-
-    // Click on a close button to hide the current list item
-    let close = document.querySelector(".delBtn" + i);
-
-    close.addEventListener('click', function () {
-        newStorage.splice(i, 1)
-        localStorage.setItem("task", JSON.stringify(newStorage));
-    })
 }
+
+
+
+
 
 
 
