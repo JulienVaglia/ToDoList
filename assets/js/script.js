@@ -1,4 +1,3 @@
-
 const d = document;
 const addLine = d.querySelector("#addLine");
 const btnUpdateTitle = d.querySelector("#btnUpdateTitle");
@@ -8,11 +7,28 @@ const aFaire = d.querySelector("#aFaire");
 const fait = d.querySelector("#fait");
 let tasks;
 
+var colorRouge = document.getElementById('rouge');
+var colorVert = document.getElementById('vert');
+var colorBleu = document.getElementById('bleu');
+var colorWhite = document.getElementById('white');
+
+colorRouge.addEventListener('click',function(){
+    document.body.style.backgroundColor = 'red';
+})
+colorVert.addEventListener('click',function(){
+    document.body.style.backgroundColor = 'green';
+})
+colorBleu.addEventListener('click',function(){
+    document.body.style.backgroundColor = 'blue';
+})
+colorWhite.addEventListener('click',function(){
+    document.body.style.backgroundColor = 'white';
+})
+
 // récupération de l'ancien localStorage
 if (localStorage.getItem("task") !== null) {
     tasks = JSON.parse(localStorage.getItem("task"));
-    displayTasks();
-} else {
+}else {
     tasks = [];
 }
 
@@ -20,12 +36,12 @@ function putInLocalStorage() {
     localStorage.setItem("task", JSON.stringify(tasks));
     displayTasks();
 }
-
 btnAdd.addEventListener("click", e => {
     let task = {
         Text: addLine.value,
         statement: "undo"
     };
+
     tasks.push(task);
     putInLocalStorage();
 });
@@ -33,7 +49,6 @@ btnAdd.addEventListener("click", e => {
 function displayTasks() {
     aFaire.innerHTML = "";
     fait.innerHTML = "";
-
     for (let i = 0; i < tasks.length; i++) {
         let displayTask = `   
             <li class="currentLi${i}">
@@ -96,4 +111,3 @@ function displayTasks() {
 
     })
 }
-
