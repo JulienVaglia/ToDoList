@@ -1,35 +1,31 @@
+
 const d = document;
 const addLine = d.querySelector("#addLine");
-
 const btnUpdateTitle = d.querySelector("#btnUpdateTitle");
 const btnAdd = d.querySelector("#btnAdd");
 const btnCancel = d.querySelector("#btnCancel");
-
 const aFaire = d.querySelector("#aFaire");
 const fait = d.querySelector("#fait");
-
 let tasks;
 
 // récupération de l'ancien localStorage
 if (localStorage.getItem("task") !== null) {
     tasks = JSON.parse(localStorage.getItem("task"));
-}else {
+    displayTasks();
+} else {
     tasks = [];
 }
 
-displayTasks()
-
 function putInLocalStorage() {
     localStorage.setItem("task", JSON.stringify(tasks));
-    displayTasks()
+    displayTasks();
 }
 
-btnAdd.addEventListener("click", e=>{
-    console.log(addLine.value)
+btnAdd.addEventListener("click", e => {
     let task = {
         Text: addLine.value,
         statement: "undo"
-    }
+    };
     tasks.push(task);
     putInLocalStorage();
 });
@@ -37,18 +33,18 @@ btnAdd.addEventListener("click", e=>{
 function displayTasks() {
     aFaire.innerHTML = "";
     fait.innerHTML = "";
-    console.log(tasks)
+
     for (let i = 0; i < tasks.length; i++) {
         let displayTask = `   
             <li class="currentLi${i}">
-                <div class="texte">
+                <div id="textTask${i}" class="textTask">
                     ${tasks[i].Text}
                 </div>
                 <div class="valide_delete">
-                    <button class="btnEdit${i}">
+                    <button class="btnEdit" data-index="${i}">
                         <img src="assets/img/5996831.png" alt="valider">
                     </button>
-                    <button class="btnDelete${i} ">
+                    <button class="btnDelete" data-index="${i}">
                         <img src="assets/img/9153963.png" alt="annuler">
                     </button>
                 </div>
@@ -59,23 +55,45 @@ function displayTasks() {
         } else {
             fait.innerHTML += displayTask;
         }
-        let btnEdit = document.querySelector(".btnEdit" + i);
-        let btnDel = document.querySelector(".btnDelete" + i);
+    }
+    const btnEditItems = document.querySelectorAll(".btnEdit");
+    btnEditItems.forEach(btn => {
+        btn.addEventListener("click", e => {
+            const index = e.target.dataset.index;
+        console.log(tasks[i].Text);
 
-        btnEdit.addEventListener("click", e=> {
-            if ((tasks[i].statement) === "undo") {
-                tasks[i].statement = "do";
-            }
-            else {
-                tasks[i].statement = "undo";
-            }
+        var inputElement = document.createElement("input");
+
+        inputElement.type = "text";
+        inputElement.id = "textContent2";
+        inputElement.placeholder = text;
+
+        document.texte.appendChild(inputElement);
+        });
+    });
+
+    const btnDeleteItems = document.querySelectorAll(".btnDelete");
+    btnDeleteItems.forEach(btn => {
+        btn.addEventListener("click", e => {
+            const index = e.target.dataset.index;
+            tasks.splice(index, 1);
             putInLocalStorage();
-        })
+        });
+    });
 
-        btnDel.addEventListener('click', e=> {
-            tasks.splice(i, 1)
+    const taskItems = document.querySelectorAll(".textTask");
+    taskItems.forEach(item => {
+        item.addEventListener("click", e => {
+            const index = e.target.id.replace("textTask", "");
+
+            if (tasks[index].statement === "undo") {
+                tasks[index].statement = "do";
+            } else {
+                tasks[index].statement = "undo";
+            }
             putInLocalStorage()
         })
 
-    }
+    })
 }
+
