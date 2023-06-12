@@ -15,59 +15,63 @@
 
 <body>
 
-<header></header>
+    <header></header>
 
-<main>
-  
-    <nav id="nav-color">
-        <ul>
-            <li class="deroulant">
-                <button id="reglage">
-                    <img alt="modifier" src="assets/img/5996831.png">
-                </button>
-                <ul class="sous-menu">
-                    <li id="rouge"><a href="#">rouge</a></li>
-                    <li id="vert"><a href="#">vert</a></li>
-                    <li id="bleu"><a href="#">bleu</a></li>
-                    <li id="white"><a href="#">blanc</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+    <main>
+
+        <nav id="nav-color">
+            <ul>
+                <li class="deroulant">
+                    <button id="reglage">
+                        <img alt="modifier" src="assets/img/5996831.png">
+                    </button>
+                    <ul class="sous-menu">
+                        <li id="rouge"><a href="#">rouge</a></li>
+                        <li id="vert"><a href="#">vert</a></li>
+                        <li id="bleu"><a href="#">bleu</a></li>
+                        <li id="white"><a href="#">blanc</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
 
 
-    <section id="title">
-        <h1>Ma ToDoList</h1>
-        <button id="btnUpdateTitle">
+        <section id="title">
+            <h1>Ma ToDoList</h1>
+            <!-- <button id="btnUpdateTitle">
             <img alt="modifier" src="assets/img/5996831.png">
-        </button>
-    </section>
+        </button> -->
+        </section>
 
 
-    <div class="task_add">
-        <label for="addLine"></label>
-        <input id="addLine" name="newTask" placeholder="Rentrez votre tâche ici" type="text">
+        <div class="task_add">
 
-        <button id="btnAdd">
-            <img alt="valider" src="assets/img/3388607.png">
-        </button>
-        <button id="btnCancel">
-            <img alt="annuler" src="assets/img/458594.png">
-        </button>
-    </div>
+            <label for="addLine"></label>
+            <input id="addLine" name="newTask" placeholder="Rentrez votre tâche ici" type="text">
+            <div id="search">
+                <button id="btnAdd">
+                    <img alt="valider" src="assets/img/3388607.png">
+                </button>
+                <!-- <button id="btnCancel">
+                    <img alt="annuler" src="assets/img/458594.png">
+                </button> -->
+            </div>
 
-    <div id="task_undone">
-        <hr id="haute">
-        <ul id="aFaire"></ul>
-    </div>
 
-    <div id="task_done">
-        <hr id="bas">
-        <ul id="fait"></ul>
-    </div>
-</main>
+        </div>
 
-<footer></footer>
+        <div id="task_undone">
+            <hr id="haute">
+            <ul id="aFaire"></ul>
+        </div>
+
+        <div id="task_done">
+            <hr id="bas">
+            <ul id="fait"></ul>
+        </div>
+    </main>
+
+    <footer></footer>
 </body>
 
 </html>
