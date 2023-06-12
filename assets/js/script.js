@@ -24,11 +24,10 @@ colorBleu.addEventListener('click',function(){
 colorWhite.addEventListener('click',function(){
     document.body.style.backgroundColor = 'white';
 })
-
-// récupération de l'ancien localStorage
 if (localStorage.getItem("task") !== null) {
     tasks = JSON.parse(localStorage.getItem("task"));
-}else {
+    displayTasks();
+} else {
     tasks = [];
 }
 
@@ -36,12 +35,12 @@ function putInLocalStorage() {
     localStorage.setItem("task", JSON.stringify(tasks));
     displayTasks();
 }
+
 btnAdd.addEventListener("click", e => {
     let task = {
         Text: addLine.value,
         statement: "undo"
     };
-
     tasks.push(task);
     putInLocalStorage();
 });
@@ -49,6 +48,7 @@ btnAdd.addEventListener("click", e => {
 function displayTasks() {
     aFaire.innerHTML = "";
     fait.innerHTML = "";
+
     for (let i = 0; i < tasks.length; i++) {
         let displayTask = `   
             <li class="currentLi${i}">
@@ -75,15 +75,7 @@ function displayTasks() {
     btnEditItems.forEach(btn => {
         btn.addEventListener("click", e => {
             const index = e.target.dataset.index;
-        console.log(tasks[i].Text);
-
-        var inputElement = document.createElement("input");
-
-        inputElement.type = "text";
-        inputElement.id = "textContent2";
-        inputElement.placeholder = text;
-
-        document.texte.appendChild(inputElement);
+            // Gérer l'édition de la tâche avec l'indice `index`
         });
     });
 
@@ -100,14 +92,14 @@ function displayTasks() {
     taskItems.forEach(item => {
         item.addEventListener("click", e => {
             const index = e.target.id.replace("textTask", "");
+            console.log(tasks[index].statement);
 
             if (tasks[index].statement === "undo") {
                 tasks[index].statement = "do";
             } else {
                 tasks[index].statement = "undo";
             }
-            putInLocalStorage()
-        })
+            putInLocalStorage()})
 
     })
-}
+} 
