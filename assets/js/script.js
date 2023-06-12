@@ -10,6 +10,7 @@ const fait = d.querySelector("#fait");
 
 let tasks;
 
+
 var colorRouge = document.getElementById('rouge');
 var colorVert = document.getElementById('vert');
 var colorBleu = document.getElementById('bleu');
@@ -35,7 +36,6 @@ if (localStorage.getItem("task") !== null) {
     tasks = [];
 }
 
-displayTasks()
 
 function putInLocalStorage() {
     localStorage.setItem("task", JSON.stringify(tasks));
@@ -97,3 +97,4 @@ function displayTasks() {
 
     }
 }
+
