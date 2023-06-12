@@ -10,6 +10,25 @@ const fait = d.querySelector("#fait");
 
 let tasks;
 
+
+var colorRouge = document.getElementById('rouge');
+var colorVert = document.getElementById('vert');
+var colorBleu = document.getElementById('bleu');
+var colorWhite = document.getElementById('white');
+
+colorRouge.addEventListener('click',function(){
+    document.body.style.backgroundColor = 'red';
+})
+colorVert.addEventListener('click',function(){
+    document.body.style.backgroundColor = 'green';
+})
+colorBleu.addEventListener('click',function(){
+    document.body.style.backgroundColor = 'blue';
+})
+colorWhite.addEventListener('click',function(){
+    document.body.style.backgroundColor = 'white';
+})
+
 // récupération de l'ancien localStorage
 if (localStorage.getItem("task") !== null) {
     tasks = JSON.parse(localStorage.getItem("task"));
@@ -17,7 +36,6 @@ if (localStorage.getItem("task") !== null) {
     tasks = [];
 }
 
-displayTasks()
 
 function putInLocalStorage() {
     localStorage.setItem("task", JSON.stringify(tasks));
