@@ -50,7 +50,15 @@ hr {
 }
 
 
-li {
+#aFaire li {
+    border-radius: 15px;
+    background-color: rgb(222, 222, 222);
+    display: flex;
+    width: 30vw;
+    height: 5vh;
+    margin: 1vh auto;
+
+}#fait li {
     border-radius: 15px;
     background-color: rgb(222, 222, 222);
     display: flex;
@@ -76,4 +84,33 @@ li {
     margin-top: 0.4vh;
     margin-left: 15vw;
     margin-right: 1vw;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,300&display=swap');  /*import du style de la police*/
+
+#nav-color {
+    position: fixed;
+    top: 0;
+    right: 0px; 
+}
+.deroulant {
+    margin-right: 20px;
+}
+.sous-menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+}
+nav > ul li:hover .sous-menu {
+    display: block;
+}
+ul {
+    list-style: none;
+}
+#rouge {
+    text-decoration: none;
+}
+a:visited {
+    color: black;
 }
