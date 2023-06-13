@@ -1,14 +1,49 @@
+/* -----------import du style de la police------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,300&display=swap');  
+
+
+
+
 main {
     font-size: larger;
 }
 
-.reglage {
-    margin-top: 2vh;
-    margin-left: 94vw;
-}
+
 
 button {
     border-radius: 15px;
+}
+
+img {
+    width: 1.5vw;
+    height: auto;
+}
+
+hr {
+    width: 40vw;
+    margin: 7vh auto;
+    border: 1.1px solid black;
+}
+
+
+/* ------------ Barre d'ajout de taches -----------*/
+
+.task_add {
+    display: flex;
+    margin: 0 auto;
+}
+
+.task_add input {
+    border-radius: 10px;
+    margin: auto;
+    
+}
+
+#search {
+    position: absolute;
+    margin: 0.7vh 65vw;
+    display: flex;
 }
 
 #addLine {
@@ -17,10 +52,6 @@ button {
     text-align: center;
 }
 
-.task_add input {
-    margin: 0 auto;
-    border-radius: 10px;
-}
 
 #request {
     position: absolute;
@@ -29,26 +60,15 @@ button {
     border: grey 1px;
 }
 
-img {
-    width: 1.5vw;
-    height: auto;
-}
+
 
 h1 {
     text-align: center;
     margin-bottom: 10vh;
 }
 
-.task_add {
-    display: flex;
-    justify-content: center;
-}
 
-hr {
-    width: 40vw;
-    margin: 7vh auto;
-}
-
+/* ----------Taches faite / à faire -----------*/
 
 #aFaire li {
     border-radius: 15px;
@@ -68,7 +88,11 @@ hr {
 
 }
 
-.task_done li {
+#task_undone, #task_done ul{
+    
+}
+
+#fait {
     text-decoration: line-through;
     font-style: italic;
     color: grey;
@@ -80,37 +104,50 @@ hr {
     margin-left: 5vw;
 }
 
-.valide_delete {
+.btnDelete {
+    position: absolute;
     margin-top: 0.4vh;
-    margin-left: 15vw;
+    margin-left: 0.2vw;
     margin-right: 1vw;
 }
 
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,300&display=swap');  /*import du style de la police*/
+.textTask {
+    width: 30vw;
+    margin: auto ;
+    padding-left: 15px;
+}
+/* -----------Réglage personnalisation couleur background------------ */
 
 #nav-color {
     position: fixed;
     top: 0;
     right: 0px; 
 }
+
 .deroulant {
     margin-right: 20px;
 }
+
+.reglage {
+    margin-top: 2vh;
+    margin-left: 94vw;
+}
+
 .sous-menu {
     display: none;
     list-style: none;
     padding: 0;
+    
 }
+
 nav > ul li:hover .sous-menu {
     display: block;
 }
+
 ul {
     list-style: none;
 }
-#rouge {
-    text-decoration: none;
-}
+
 a:visited {
     color: black;
 }

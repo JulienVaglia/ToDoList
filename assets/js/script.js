@@ -45,6 +45,8 @@ btnAdd.addEventListener("click", e => {
     putInLocalStorage();
 });
 
+
+
 function displayTasks() {
     aFaire.innerHTML = "";
     fait.innerHTML = "";
@@ -56,9 +58,7 @@ function displayTasks() {
                     ${tasks[i].Text}
                 </div>
                 <div class="valide_delete">
-                    <button class="btnEdit" data-index="${i}">
-                        <img src="assets/img/5996831.png" alt="valider">
-                    </button>
+                    
                     <button class="btnDelete" data-index="${i}">
                         <img src="assets/img/9153963.png" alt="annuler">
                     </button>
