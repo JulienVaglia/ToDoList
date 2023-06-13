@@ -55,7 +55,6 @@ btnAdd.addEventListener("click", e=>{
 function displayTasks() {
     aFaire.innerHTML = "";
     fait.innerHTML = "";
-    console.log(tasks)
     for (let i = 0; i < tasks.length; i++) {
         let displayTask = `   
             <li class="currentLi${i}">
