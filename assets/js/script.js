@@ -45,6 +45,8 @@ btnAdd.addEventListener("click", e => {
     putInLocalStorage();
 });
 
+
+
 function displayTasks() {
     aFaire.innerHTML = "";
     fait.innerHTML = "";
